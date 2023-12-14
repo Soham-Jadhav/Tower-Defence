@@ -13,13 +13,11 @@ const windowHeightOffset = (window.innerHeight - canvas.height) / 2;
 context.fillStyle = 'black';
 context.fillRect(0, 0, canvas.width, canvas.height);
 
-// console.log('go');
-
 const image = new Image();
-image.src = './../assets/gameMap2.png';
 image.onload = () => {
     animate();
 }
+image.src = './../assets/gameMap2.png';
 
 let placementTiles = [];
 let enemies = [];
@@ -77,13 +75,12 @@ function animate() {
         enemy.update();
 
         if (enemy.position.y + enemy.height / 2 < 0) {
-            // console.log('decrease heart');
             hearts--;
             heartsDisplay.innerText = hearts.toString().padStart(2, '0');
             enemies.splice(i, 1);
 
             if (hearts <= 0) {
-                console.log('game over');
+                console.log('Game Over!!! Reload to play again.');
 
                 cancelAnimationFrame(animationId);
                 gameOver.style.display = 'flex';
@@ -130,8 +127,6 @@ function animate() {
             return (distance < enemy.radius + building.range);
         });
         building.target = validEnemies[0];
-
-        // console.log(validEnemies);
 
         for (let j = building.projectiles.length - 1; j >= 0; j--) {
             const projectile = building.projectiles[j];
@@ -192,13 +187,9 @@ canvas.addEventListener('click', (event) => {
             return -(a.position.y - b.position.y);
         });
     }
-
-    // console.log(buildings);
 });
 
 addEventListener('mousemove', (event) => {
-    // console.log(event);
-
     mouse.x = event.clientX - windowWidthOffset;
     mouse.y = event.clientY - windowHeightOffset;
 

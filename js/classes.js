@@ -36,7 +36,7 @@ class Sprite {
         );
     }
 
-    update(){
+    update() {
         this.draw();
 
         if (this.frames.elapsed % this.frames.hold === 0) {
@@ -82,13 +82,6 @@ class Orc extends Sprite {
 
     draw() {
         super.draw();
-        // context.fillStyle = 'red';
-        // // context.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-        // context.beginPath();
-        // context.arc(this.position.x + this.width / 2, this.position.y + this.height / 2, this.radius, 0, Math.PI * 2);
-        // context.fill();
-        // context.closePath();
 
         // Health bar
         context.fillStyle = 'red';
@@ -149,7 +142,6 @@ class PlacementTile {
             mouse.y >= this.position.y &&
             mouse.y < this.position.y + this.height
         ) {
-            // console.log('collusion');
             this.color = 'green';
         }
         else {
@@ -184,39 +176,31 @@ class Building extends Sprite {
 
     draw() {
         super.draw();
-        // context.fillStyle = 'blue';
-        // context.fillRect(this.position.x, this.position.y, this.width, this.height);
-
-        // context.beginPath()
-        // context.arc(this.position.x + this.width / 2, this.position.y + this.height / 2, this.range, 0, Math.PI * 2);
-        // context.fillStyle = 'rgba(0, 0, 255, 0.2)';
-        // context.fill();
-        // context.closePath();
     }
 
     update() {
         this.draw();
 
-        if(
-            this.target || 
+        if (
+            this.target ||
             (
-                !this.target && 
+                !this.target &&
                 this.frames.current !== 0
             )
-        ){
+        ) {
             super.update();
         }
 
-        if(
-            this.target && 
+        if (
+            this.target &&
             this.frames.current === 6 &&
             this.frames.elapsed % this.frames.hold === 0
-        ){
+        ) {
             this.shoot();
         }
     }
 
-    shoot(){
+    shoot() {
         this.projectiles.push(
             new Projectile({
                 position: {
@@ -243,7 +227,6 @@ class Projectile extends Sprite {
                 max: 1
             }
         });
-        // this.position = position;
         this.velocity = {
             x: 0,
             y: 0
@@ -252,19 +235,7 @@ class Projectile extends Sprite {
         this.color = color;
         this.enemy = enemy;
         this.speed = 5;
-        // this.image = new Image();
-        // this.image.src = './../assets/projectile.png';
     }
-
-    // draw() {
-    //     context.drawImage(this.image, this.position.x, this.position.y);
-
-    //     // context.beginPath();
-    //     // context.arc(this.position.x, this.position.y, this.radius, 0, 2 * Math.PI);
-    //     // context.fillStyle = this.color;
-    //     // context.fill();
-    //     // context.closePath();
-    // }
 
     update() {
         this.draw();
