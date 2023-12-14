@@ -3,7 +3,7 @@ Defend against waves of enemies in this strategic tower defense game. Build towe
 
 The hearts to the right indicate the number of lives you are left with & the number of coins. You can build defence towers using coins (50 coins per tower). 
 
-You can play the game here: \<To be updated...\>
+You can play the game here: https://sj21031-tower-defence.netlify.app/ 
 
 ---
 
